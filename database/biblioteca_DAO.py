@@ -8,6 +8,13 @@ from model.biblioteca_DTO import Biblioteca
 
 class BibliotecaDAO:
     def __init__(self):
-        pass
 
-    # TODO
+    def get_biblioteche(self):
+        biblioteca_db = []
+
+        db = DBConnect()
+        cnx = db.get_connection()
+
+        if cnx is not None:
+            #biblioteca_db = cnx.cursor()
+            query  = "SELECT distinct id,nome from biblioteca b "

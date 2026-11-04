@@ -18,7 +18,7 @@ class Controller:
         self.genere_selezionato = None
 
     # POPOLA DROPDOWN
-    # TODO
+
 
     # CALLBACKS DROPDOWN
     # TODO

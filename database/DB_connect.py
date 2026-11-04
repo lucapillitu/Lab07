@@ -12,10 +12,11 @@ class DBConnect:
     # Manteniamo il pool di connessioni come attributo di classe, non di istanza
     _pool_connessioni = None
 
+#se provi a creare un oggetto di questa classe ti da errore puoi unicamenete usare il metodo
     def __init__(self):
         raise RuntimeError("Non creare un'istanza, usa il metodo di classe ottieni_connessione()!")
 
-    @classmethod
+    @classmethod#tramite questo testo definisci il fatto che richiami la classe tramite il metodo direttamente
     def get_connection(cls, nome_pool="mio_pool", dimensione_pool=3) -> mysql.connector.pooling.PooledMySQLConnection | None:
         """
         Metodo factory per ottenere una connessione dal pool.
@@ -26,7 +27,7 @@ class DBConnect:
         :return: mysql.connector.connection oppure None in caso di errore di connessione
         """
         if cls._pool_connessioni is None:
-            try:
+            try:#crea la pool di connessioni
                 cls._pool_connessioni = mysql.connector.pooling.MySQLConnectionPool(
                     pool_name=nome_pool,
                     pool_size=dimensione_pool,
@@ -45,4 +46,4 @@ class DBConnect:
                     print(f"Errore di connessione: {err}")
                     return None
         else:
-            return cls._pool_connessioni.get_connection()
+            return cls._pool_connessioni.get_connection()#se gia creata returna direttamentela pool di connessioni

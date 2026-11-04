@@ -10,4 +10,9 @@ class LibroDAO:
     def __init__(self):
         pass
 
-    # TODO
+    def get_libri(self):
+        pass
+
+    def get_generi(self):
+        pass
+

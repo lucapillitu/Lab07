@@ -43,9 +43,9 @@ class View:
         self.txt_titolo = ft.Text(value="Biblioteche di Torino", size=38, weight=ft.FontWeight.BOLD)
 
         # --- Sezione 2: Filtraggio ---
-        self._dd = ft.Dropdown(label="Biblioteca",on_select=nullcontext)
-        self._dd2 = ft.Dropdown(label="Genere",on_select=nullcontext)
-        btn = ft.Button(content="Mostra libri",on_click=nullcontext,alignment = ft.Alignment.CENTER)
+        self._dd = ft.Dropdown(label="Biblioteca" ,width=300,on_select=nullcontext)
+        self._dd2 = ft.Dropdown(label="Genere", width=300,on_select=nullcontext)
+        btn = ft.Button(content="Mostra libri",on_click=nullcontext)
 
         row1 = ft.Row([self._dd,self._dd2],
                      alignment = ft.MainAxisAlignment.CENTER)
@@ -68,7 +68,7 @@ class View:
             # Sezione 2: Filtraggio
             row1,
             ft.Divider(),
-            btn,
+            ft.Row(controls=[btn], alignment=ft.MainAxisAlignment.CENTER),
             ft.Divider(),
 
             # Sezione 3: Libri

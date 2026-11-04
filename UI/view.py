@@ -1,3 +1,6 @@
+from contextlib import nullcontext
+from multiprocessing import context
+
 import flet as ft
 from UI.alert import AlertManager
 
@@ -14,6 +17,10 @@ class View:
         self.page.title = "Lab07"
         self.page.horizontal_alignment = "center"
         self.page.theme_mode = ft.ThemeMode.DARK
+        self._dd = None
+        self._dd2 = None
+        self._list_view = None
+
 
         # Alert
         self.alert = AlertManager(page)
@@ -36,10 +43,16 @@ class View:
         self.txt_titolo = ft.Text(value="Biblioteche di Torino", size=38, weight=ft.FontWeight.BOLD)
 
         # --- Sezione 2: Filtraggio ---
-        # TODO
+        self._dd = ft.Dropdown(label="Biblioteca",on_select=nullcontext)
+        self._dd2 = ft.Dropdown(label="Genere",on_select=nullcontext)
+        btn = ft.Button(content="Mostra libri",on_click=nullcontext,alignment = ft.Alignment.CENTER)
+
+        row1 = ft.Row([self._dd,self._dd2],
+                     alignment = ft.MainAxisAlignment.CENTER)
+
 
         # Sezione 3: Libri
-        # TODO
+        self._list_view = ft.ListView(expand=True)
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -53,10 +66,13 @@ class View:
             ft.Divider(),
 
             # Sezione 2: Filtraggio
-            # TODO
+            row1,
+            ft.Divider(),
+            btn,
+            ft.Divider(),
 
             # Sezione 3: Libri
-            # TODO
+            self._list_view
         )
 
         self.page.scroll = "adaptive"

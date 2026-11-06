@@ -13,7 +13,6 @@ class Model:
         self._biblioteca_dao = BibliotecaDAO()
         self._libro_dao = LibroDAO()
         self.libri = []
-        self.generi = []
         self.biblioteche = []
 
     # --- LIBRI ---
@@ -32,6 +31,9 @@ class Model:
 
     # --- BIBLIOTECHE ---
     def get_biblioteche(self):
-        pass
-        """ Restituisce la lista di tutte le biblioteche."""
-
+        bib = self._biblioteca_dao.get_biblioteche()
+        if bib is not None:
+            print(bib)
+            return bib
+        else:
+            return None

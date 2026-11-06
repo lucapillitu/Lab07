@@ -30,6 +30,7 @@ class BibliotecaDAO:
                  b = Biblioteca(int(row["id"]), row["nome"], row["indirizzo"])
                  result.append(b)
 
+            print(result)
             return result#lista dizionari con i dati delle biblioteche dentro
         except mysql.connector.Error as err:
                 print(err)

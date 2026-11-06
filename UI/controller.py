@@ -21,7 +21,15 @@ class Controller:
 
     # POPOLA DROPDOWN
     def add_generi(self):
-        listageneri = model.get_generi()
+        generi = self._model.get_generi()
+        if generi is None :
+            return None
+        self._view._dd2.options.append(ft.dropdown.Option("Nessun Genere"))
+        for g in generi:
+            self._view._dd2.options.append(g)
+
+        self._view.update()
+
 
 
     # CALLBACKS DROPDOWN

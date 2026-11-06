@@ -1,5 +1,5 @@
 from contextlib import nullcontext
-from multiprocessing import context
+
 
 import flet as ft
 from UI.alert import AlertManager
@@ -68,13 +68,14 @@ class View:
             # Sezione 2: Filtraggio
             row1,
             ft.Divider(),
+
             ft.Row(controls=[btn], alignment=ft.MainAxisAlignment.CENTER),
             ft.Divider(),
 
             # Sezione 3: Libri
             self._list_view
         )
-
+        self.controller.add_generi()
         self.page.scroll = "adaptive"
         self.page.update()
 

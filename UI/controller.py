@@ -24,12 +24,17 @@ class Controller:
         generi = self._model.get_generi()
         if generi is None :
             return None
+
         self._view._dd2.options.append(ft.dropdown.Option("Nessun Genere"))
         for g in generi:
-            self._view._dd2.options.append(g)
-
+            self._view._dd2.options.append(ft.dropdown.Option(g))
         self._view.update()
 
+
+
+
+    def add_biblioteche(self):
+        pass
 
 
     # CALLBACKS DROPDOWN

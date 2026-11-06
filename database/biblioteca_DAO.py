@@ -11,6 +11,7 @@ class BibliotecaDAO:
     def __init__(self):
         pass
 
+
     def get_biblioteche(self):
         cnx = DBConnect.get_connection()
         if cnx is None:

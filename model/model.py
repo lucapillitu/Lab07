@@ -19,8 +19,8 @@ class Model:
         # TODO
 
     def get_generi(self):
-        """Restituisce la lista di tutti i generi."""
-        # TODO
+        generi = LibroDAO().get_generi()
+        return generi
 
     # --- BIBLIOTECHE ---
     def get_biblioteche(self):

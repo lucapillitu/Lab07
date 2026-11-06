@@ -1,4 +1,6 @@
 import flet as ft
+
+import model
 from UI.view import View
 from model.model import Model
 
@@ -18,6 +20,8 @@ class Controller:
         self.genere_selezionato = None
 
     # POPOLA DROPDOWN
+    def add_generi(self):
+        listageneri = model.get_generi()
 
 
     # CALLBACKS DROPDOWN

@@ -27,7 +27,7 @@ class BibliotecaDAO:
             # result = cursor.fetchall() --> returna tutte i record insieme in lista
             result = []
             for row in cursor:
-                 b = Biblioteca(row["id"], row["nome"], row["indirizzo"])
+                 b = Biblioteca(int(row["id"]), row["nome"], row["indirizzo"])
                  result.append(b)
 
             return result#lista dizionari con i dati delle biblioteche dentro

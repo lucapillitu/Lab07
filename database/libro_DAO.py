@@ -31,7 +31,7 @@ class LibroDAO:
                 l = Libro(int(row["id"]), row["titolo"], row["autore"], row["genere"],int(row["anno_pubblicazione"]), int(row["id_biblioteca"]))
                 result.append(l)
 
-            return result  # lista dizionari con i dati delle biblioteche dentro
+            return result  # lista dizionari con i dati dei libri dentro
         except mysql.connector.Error as err:
             print(err)
             return None

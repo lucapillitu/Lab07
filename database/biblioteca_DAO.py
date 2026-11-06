@@ -1,3 +1,4 @@
+import mysql.connector
 from database.DB_connect import DBConnect
 from model.biblioteca_DTO import Biblioteca
 
@@ -8,13 +9,32 @@ from model.biblioteca_DTO import Biblioteca
 
 class BibliotecaDAO:
     def __init__(self):
+        pass
 
     def get_biblioteche(self):
-        biblioteca_db = []
+        cnx = DBConnect.get_connection()
+        if cnx is None:
+            return None
+        cursor = None
 
-        db = DBConnect()
-        cnx = db.get_connection()
-
-        if cnx is not None:
+        try:
             #biblioteca_db = cnx.cursor()
-            query  = "SELECT distinct id,nome from biblioteca b "
+            query  = "SELECT distinct id,nome,indirizzo from biblioteca b "
+            cursor = cnx.cursor(dictionary=True)
+            cursor.execute(query)
+            # Leggo tutto dal cursore in una variabile results
+            # result = cursor.fetchall() --> returna tutte i record insieme in lista
+            result = []
+            for row in cursor:
+                 b = Biblioteca(row["id"], row["nome"], row["indirizzo"])
+                 result.append(b)
+
+            return result#lista dizionari con i dati delle biblioteche dentro
+        except mysql.connector.Error as err:
+                print(err)
+                return None
+
+        finally:
+            if cursor is not None:
+                cursor.close()
+            cnx.close()

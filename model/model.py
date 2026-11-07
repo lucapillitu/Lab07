@@ -33,7 +33,7 @@ class Model:
     def get_biblioteche(self):
         bib = self._biblioteca_dao.get_biblioteche()
         if bib is not None:
-            print(bib)
+
             return bib
         else:
             return None

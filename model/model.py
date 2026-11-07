@@ -19,6 +19,7 @@ class Model:
     # --- LIBRI ---
     def get_libri_filtrati(self, biblioteca:str, genere:str):
         self.libri = self._libro_dao.get_libri(genere, biblioteca)
+        return self.libri
 
 
     def get_generi(self):

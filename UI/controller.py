@@ -61,7 +61,24 @@ class Controller:
 
 
     # AZIONE: MOSTRA LIBRI
-    def mostra_libri(self):
-        self.libri = self._model.get_libri_filtrati(self.genere_selezionato,str(self.biblioteca_selezionata))
-        #svuoto lo schermo dalla precendente visualizzazione ipotetica:
+    def mostra_libri(self, e):
+        self.libri = self._model.get_libri_filtrati(self.biblioteca_selezionata, self.genere_selezionato)
+
+        # svuoto la lista mostrata prima
         self._view._list_view.controls.clear()
+
+        if self.libri is None:
+            self._view.show_alert("❌ Errore nella lettura dei libri dal database")
+            return
+
+        if len(self.libri) == 0:
+            self._view.show_alert("ℹ️ Nessun libro trovato con i filtri selezionati")
+            self._view.update()
+            return
+
+        for libro in self.libri:
+            self._view._list_view.controls.append(ft.Text(str(libro)))
+
+        self._view.update()
+
+

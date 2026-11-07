@@ -1,6 +1,4 @@
 import flet as ft
-
-import model
 from UI.view import View
 from model.model import Model
 
@@ -14,6 +12,7 @@ class Controller:
     def __init__(self, view: View, model: Model):
         self._model = model
         self._view = view
+        self.biblioteche = []
 
         # Variabili per memorizzare le selezioni correnti
         self.biblioteca_selezionata = None
@@ -31,12 +30,12 @@ class Controller:
         self._view.update()
 
     def add_biblioteche(self):
-        bib = self._model.get_biblioteche()
-        if bib is None:
+        self.biblioteche = self._model.get_biblioteche()
+        if self.biblioteche is None:
             return None
 
         self._view._dd.options.append(ft.dropdown.Option("Nessuna Biblioteca"))
-        for b in bib:
+        for b in self.biblioteche:
             self._view._dd.options.append(ft.dropdown.Option(b.nome))
         self._view.update()
 
@@ -53,22 +52,10 @@ class Controller:
         if self._view._dd.value == "Nessuna Biblioteca":
             self.biblioteca_selezionata = None
         else :
-            bib = self._model.get_biblioteche()#prendo il dizionario di bibliteche per trovare il rispettivo id
+            bib = self.biblioteche#prendo il dizionario di bibliteche per trovare il rispettivo id
             for b in bib:
                 if b.nome == self._view._dd.value:
                     self.biblioteca_selezionata = b.id
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

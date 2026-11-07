@@ -41,8 +41,8 @@ class View:
         # --- Sezione 1: Intestazione ---
         self.txt_titolo = ft.Text(value="Biblioteche di Torino", size=38, weight=ft.FontWeight.BOLD)
         # --- Sezione 2: Filtraggio ---
-        self._dd = ft.Dropdown(label="Biblioteca" ,width=300,on_select=nullcontext)
-        self._dd2 = ft.Dropdown(label="Genere", width=300,on_select=nullcontext)
+        self._dd = ft.Dropdown(label="Biblioteca" ,width=300,on_select=self.controller.add_biblioteca_selezionata)#senza le parentesi il metodo è allocato ma non eseguito
+        self._dd2 = ft.Dropdown(label="Genere", width=300,on_select=self.controller.add_genere_selezionato)
         btn = ft.Button(content="Mostra libri",on_click=nullcontext)
         # Sezione 3: Libri
         self._list_view = ft.ListView(expand=True)

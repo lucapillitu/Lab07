@@ -35,14 +35,42 @@ class Controller:
         if bib is None:
             return None
 
-        self._view._dd.options.append(ft.dropdown.Option("Nessuna biblioteca"))
+        self._view._dd.options.append(ft.dropdown.Option("Nessuna Biblioteca"))
         for b in bib:
             self._view._dd.options.append(ft.dropdown.Option(b.nome))
         self._view.update()
 
 
-    # CALLBACKS DROPDOWN
-    # TODO
+    # CALLBACKS DROPDOWN :  dopo che seleziono i dropdown o meno deve ritornarmi un dato valore per poter fafre le query di ricerca
+    def add_genere_selezionato(self,e):
+        self.genere_selezionato = self._view._dd2.value
+        if self.genere_selezionato == "Nessun Genere":
+            self.genere_selezionato = None
+
+
+    def add_biblioteca_selezionata(self,e):
+
+        if self._view._dd.value == "Nessuna Biblioteca":
+            self.biblioteca_selezionata = None
+        else :
+            bib = self._model.get_biblioteche()#prendo il dizionario di bibliteche per trovare il rispettivo id
+            for b in bib:
+                if b.nome == self._view._dd.value:
+                    self.biblioteca_selezionata = b.id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # AZIONE: MOSTRA LIBRI
     # TODO

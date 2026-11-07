@@ -37,7 +37,7 @@ class Controller:
 
         self._view._dd.options.append(ft.dropdown.Option("Nessuna biblioteca"))
         for b in bib:
-            self._view._dd.options.append(ft.dropdown.Option(b["nome"]))
+            self._view._dd.options.append(ft.dropdown.Option(b.nome))
         self._view.update()
 
 

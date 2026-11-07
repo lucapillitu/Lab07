@@ -70,6 +70,7 @@ class View:
             self._list_view
         )
         self.controller.add_generi()
+        self.controller.add_biblioteche()
         self.page.scroll = "adaptive"
         self.page.update()
 

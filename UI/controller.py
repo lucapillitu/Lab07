@@ -13,6 +13,7 @@ class Controller:
         self._model = model
         self._view = view
         self.biblioteche = []
+        self.libri = []
 
         # Variabili per memorizzare le selezioni correnti
         self.biblioteca_selezionata = None
@@ -60,4 +61,7 @@ class Controller:
 
 
     # AZIONE: MOSTRA LIBRI
-    # TODO
+    def mostra_libri(self):
+        self.libri = self._model.get_libri_filtrati(self.genere_selezionato,str(self.biblioteca_selezionata))
+        #svuoto lo schermo dalla precendente visualizzazione ipotetica:
+        self._view._list_view.controls.clear()

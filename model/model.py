@@ -1,3 +1,4 @@
+from database import libro_DAO
 from database.biblioteca_DAO import BibliotecaDAO
 from database.libro_DAO import LibroDAO
 
@@ -13,11 +14,12 @@ class Model:
         self._biblioteca_dao = BibliotecaDAO()
         self._libro_dao = LibroDAO()
         self.libri = []
-        self.biblioteche = []
+
 
     # --- LIBRI ---
     def get_libri_filtrati(self, biblioteca:str, genere:str):
-        pass
+        self.libri = self._libro_dao.get_libri(genere, biblioteca)
+
 
     def get_generi(self):
         generi = self._libro_dao.get_generi()  # chiamata unica
